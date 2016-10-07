@@ -1,3 +1,17 @@
 <% @posts.each do |post| %>
   <%= render partial: "post", locals: {post: post} %>
 <% end %>
+
+
+
+<script type="text/javascript">
+  $(function () {
+    $(".js-more").on('click', function() {
+      var id = $(this).data("id");
+      var url = `/posts/${ id }/body`
+      $.get(url, function(data) {
+        $("#body-" + id).text(data);
+      }) 
+    })
+  })
+</script>
