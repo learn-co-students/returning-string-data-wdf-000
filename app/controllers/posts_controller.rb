@@ -6,6 +6,12 @@ class PostsController < ApplicationController
   end
 
   def show
+    post = Post.find_by(params[:id])
+  end
+
+  def body
+    post = Post.find_by(params[:id])
+    render plain: post.description
   end
 
   def new
