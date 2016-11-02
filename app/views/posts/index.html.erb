@@ -1,3 +1,18 @@
 <% @posts.each do |post| %>
   <%= render partial: "post", locals: {post: post} %>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $('.js-more').on('click', function() {
+      // get the id from the data attribute
+      let id = $(this).data('id');
+
+      // here we make our ajax call
+      $.get(`/posts/${id}/body`, data => {
+        // replace text of body-id div
+        $(`#body-${id}`).text(data);
+      });
+    });
+  });
+</script>
