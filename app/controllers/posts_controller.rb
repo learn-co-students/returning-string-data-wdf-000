@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @submit_button = "Submit Post"
   end
 
   def create
@@ -19,11 +20,17 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @submit_button = "Update Post"
   end
 
   def update
     @post.update(post_params)
     redirect_to post_path(@post)
+  end
+
+  def body
+    post = Post.find(params[:id])
+    render plain: post.description
   end
 
 private
