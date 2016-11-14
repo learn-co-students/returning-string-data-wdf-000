@@ -21,6 +21,11 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def body
+    post = Post.find(params[:id])
+    render plain: post.description
+  end
+
   def update
     @post.update(post_params)
     redirect_to post_path(@post)
