@@ -6,10 +6,14 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find_by(id: params[:id])
+
+    # binding.pry
   end
 
   def new
     @post = Post.new
+    @submit = "Submit Post"
   end
 
   def create
@@ -19,11 +23,19 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find_by(id: params[:id])
+    @submit = "Update Post"
+    # binding.pry
   end
 
   def update
     @post.update(post_params)
     redirect_to post_path(@post)
+  end
+
+  def body
+    post = Post.find(params[:id])
+    render plain: post.description
   end
 
 private
