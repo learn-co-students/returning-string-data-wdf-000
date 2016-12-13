@@ -1,2 +1,7 @@
 <h1><%= post.id %>: <%= post.title %></h2>
-<div><%= truncate post.description %></div>
+<div id="body-<%=post.id%>"><%= truncate post.description %></div>
+
+<!-- truncate will cut off everything after 30 characters. -->
+<button class="js-more" data-id="<%= post.id %>">More...</button>
+<!-- 'js- is a common way to communicate that this class is used as a JavaScript selector. -->
+<!-- to tie the button to a specific post - data-id to hold the post.id for us. -->
