@@ -1,5 +1,7 @@
-<%= @post.author.name %>
-<%= @post.author.hometown %>
+<% if @post.author %>
+  <%= @post.author.name %>
+  <%= @post.author.hometown %>
+<% end %>
 
 <h1><%= @post.title %></h1>
 <p><%= @post.description %></p>
