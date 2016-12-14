@@ -1,14 +1,21 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update]
 
+  def body
+    post = Post.find(params[:id])
+    render plain: post.description
+  end
+
   def index
     @posts = Post.all
   end
 
   def show
+    @post = set_post
   end
 
   def new
+    @action = "Submit"
     @post = Post.new
   end
 
@@ -19,6 +26,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @action = "Update"
   end
 
   def update
